@@ -1,0 +1,46 @@
+div.message_unread {
+  font-size: 16px;
+  font-weight: bold;
+  font-family: serif;
+  color: black;
+    
+}
+
+div.message_read {
+  font-size: 16px;
+  font-weight: normal;
+  font-family: serif;
+  color: gray;
+} 
+
+div#l {
+    
+    font-size: 78px;
+    font-family: serif;
+    font-weight: bold;
+    color: lightskyblue;
+    position: relative;
+    text-align: center;
+    font-stretch: ultra-expanded;
+}
+
+div#l1 {
+    float: none;
+    width: 200px;
+    text-align: center;
+    height: 200px;
+    margin: auto;
+    position: absolute;
+    top: 0; bottom: 0;
+    left: 0; right: 0;
+    max-width: 100%;
+    max-height: 100%   
+}
+
+div#l2 {
+    position: fixed;
+    text-align: center;
+    font-weight: bold;
+    left: 45%; 
+    top: 60%; 
+}

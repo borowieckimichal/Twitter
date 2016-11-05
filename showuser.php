@@ -9,7 +9,7 @@ if (!isset($_SESSION['loggedUserId'])) {
     header("Location: login.php");
 }
 ?>
-Id użytkownika: <?php echo $_SESSION['loggedUserId']; 
+Id użytkownika: <?php echo $_SESSION['loggedUserId'];
 ?>
 <br>
 <a href="logout.php">Logout</a>
@@ -30,16 +30,16 @@ Id użytkownika: <?php echo $_SESSION['loggedUserId'];
             <tr>
                 <td> <?php
                     $id = $_SESSION['loggedUserId'];
-                    
+
                     $loadedTweets = Tweet::loadAllTweetsByUserId($conn, $id);
                     foreach ($loadedTweets as $tweet) {
                         $tweetId = $tweet->getId();
                         $numberComments = count(Comment::loadAllCommentsByPostId($conn, $tweetId));
-                        echo "nr tweeta:". $tweet->getId()." | ";
-                        echo "Tweet:".$tweet->getText(). " | ";
+                        echo "nr tweeta:" . $tweet->getId() . " | ";
+                        echo "Tweet:" . $tweet->getText() . " | ";
                         echo "<a href='postinfo.php?postid=" . $tweet->getId() . "'>strona postu</a>" . " | ";
-                        echo "liczba komentarzy:".$numberComments. " | ";
-                        echo "nr autora:". $tweet->getUserId() . "<br>";                       
+                        echo "liczba komentarzy:" . $numberComments . " | ";
+                        echo "nr autora:" . $tweet->getUserId() . "<br>";
                     }
                     ?>
                 </td>

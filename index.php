@@ -12,6 +12,9 @@ Twoje ID: <?php echo $_SESSION['loggedUserId']; ?>
 <a href="showuser.php">strona użytkownika</a>
 <br>
 <a href="edituser.php">edycja danych użytkonika</a>
+<br>
+<a href="allmessages.php">moje wiadomości </a>
+
 <?php
 if($_SERVER['REQUEST_METHOD'] == 'POST') {
 	require_once 'src/connection.php';

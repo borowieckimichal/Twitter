@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Nov 01, 2016 at 05:21 PM
+-- Generation Time: Nov 05, 2016 at 07:57 PM
 -- Server version: 5.5.50-0ubuntu0.14.04.1
 -- PHP Version: 5.5.9-1ubuntu4.19
 
@@ -71,21 +71,31 @@ CREATE TABLE IF NOT EXISTS `Message` (
   `id_receiver` int(11) NOT NULL,
   `creation_date` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `text` varchar(255) DEFAULT NULL,
-  `unread` tinyint(11) DEFAULT NULL,
+  `unread` tinyint(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `id_sender` (`id_sender`),
   KEY `id_receiver` (`id_receiver`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=31 ;
 
 --
 -- Dumping data for table `Message`
 --
 
 INSERT INTO `Message` (`id`, `id_sender`, `id_receiver`, `creation_date`, `text`, `unread`) VALUES
-(1, 3, 1, '2016-10-31 15:46:09', 'test', 0),
-(2, 3, 2, '2016-10-31 15:53:39', 'test5', 0),
-(3, 2, 1, '2016-10-31 15:54:17', 'test6', 0),
-(4, 3, 1, '2016-10-31 18:02:01', 'test6', 0);
+(17, 1, 2, '2016-11-04 21:54:06', 'wiadmosc2', 1),
+(18, 1, 2, '2016-11-04 21:54:10', 'test2', 1),
+(19, 1, 2, '2016-11-04 21:54:15', '', 1),
+(20, 1, 2, '2016-11-04 21:54:18', '', 1),
+(21, 1, 2, '2016-11-04 11:45:19', 'test55', 1),
+(22, 2, 1, '2016-11-04 21:29:28', 'test66', 1),
+(23, 2, 1, '2016-11-04 21:29:48', 'test77', 1),
+(24, 3, 2, '2016-11-04 11:59:42', 'test77', 1),
+(25, 2, 3, '2016-11-04 12:06:03', 'test88', 1),
+(26, 3, 1, '2016-11-04 12:28:01', 'test5', 1),
+(27, 2, 1, '2016-11-04 19:16:11', 'wiadmoÅ›Ä‡ 999', 1),
+(28, 1, 2, '2016-11-04 20:33:02', 'test17', 1),
+(29, 1, 2, '2016-11-05 15:12:33', 'wiadomosc testowa 16', 1),
+(30, 3, 1, '2016-11-05 18:45:47', 'testowa wiadomosc', 0);
 
 -- --------------------------------------------------------
 
@@ -139,7 +149,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   `email` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `email` (`email`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=15 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
 
 --
 -- Dumping data for table `users`
@@ -148,7 +158,7 @@ CREATE TABLE IF NOT EXISTS `users` (
 INSERT INTO `users` (`id`, `username`, `hashed_password`, `email`) VALUES
 (1, 'user3', '$2y$10$SEgV8Vjrf6I6Mo8DhNnytum76ctW58xXKuFil.iGxMvArq7RGQuP2', 'michal@gmail.com'),
 (2, 'jan', '$2y$10$viiBq.1oyHW/y02q0ee1FeJquRDqJ6cQF9gV4Bcf0g8LPP5D7VdRa', 'jan@gmail.com'),
-(3, 'user10', '$2y$10$.DCtXpKvJ8HKYjtnFwaw0.QopUKA37ai29rQEPQ2oPtWL2kSd7F/C', 'user10@gmail.com');
+(3, 'user2', '$2y$10$0M8vd5RdODkPCI7vxXeuOezrQyaXtLZeiVr2LLm.33lM/SO.ZDePa', 'user2@gmail.com');
 
 --
 -- Constraints for dumped tables

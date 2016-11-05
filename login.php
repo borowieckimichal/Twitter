@@ -33,11 +33,16 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
 <html lang="pl">
     <head>
         <meta charset="utf-8"/>
+        <link rel="stylesheet" href="css/style.css" />
         <title>Twitter - login</title>
     </head>
 	<body>
-		<form method="POST" align="center">
-			<fieldset>
+            <div id="l">
+                Twitter              
+            </div>
+            <div id="l1">
+		<form method="POST">
+			<fieldset align="center">
 			<strong>Twitter - Logowanie</strong><br>
                                 <label>
 					E-mail:
@@ -53,8 +58,12 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
 			</fieldset>
 			<input type="submit" value="Login">
 		</form>
-		<br>
-                <hr>
-		<a href="register.php"> zarejestruj się</a>
+            </div>
+            <div id="l2">
+		<br>              
+                Nie masz jeszcze konta ?
+                <br>
+		<a href="register.php">zarejestruj się</a>
+            </div>
 	</body>
 </html>

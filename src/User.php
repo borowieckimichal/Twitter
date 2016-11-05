@@ -68,6 +68,10 @@ class User {
 
                 return true;
             } else {
+              
+            return false;
+            }
+        } else {
                 $sql = "UPDATE users SET username='$this->username',hashed_password='$this->hashedPassword',email='$this->email'  
                 WHERE id=$this->id";
 
@@ -75,11 +79,10 @@ class User {
 
                 if ($result == true) {
                     return true;
+                } else {
+                    return false;
                 }
-            }
-
-            return false;
-        }
+        }       
     }
 
     /**
