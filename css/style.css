@@ -1,20 +1,19 @@
 div.message_unread {
-  font-size: 16px;
-  font-weight: bold;
-  font-family: serif;
-  color: black;
-    
+    font-size: 16px;
+    font-weight: bold;
+    font-family: serif;
+    color: black;
+
 }
 
 div.message_read {
-  font-size: 16px;
-  font-weight: normal;
-  font-family: serif;
-  color: gray;
+    font-size: 16px;
+    font-weight: normal;
+    font-family: serif;
+    color: gray;
 } 
 
-div#l {
-    
+div#l {   
     font-size: 78px;
     font-family: serif;
     font-weight: bold;

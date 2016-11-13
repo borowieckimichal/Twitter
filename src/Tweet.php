@@ -1,6 +1,5 @@
 <?php
 
-
 class Tweet {
 
     private $id;
@@ -16,7 +15,6 @@ class Tweet {
         $this->creationDate = "";
     }
 
-
     public function setUserId($newUserId) {
         $this->userId = $newUserId;
     }
@@ -28,9 +26,8 @@ class Tweet {
     }
 
     public function setCreationDate($newCreationDate) {
-        
+
         $this->creationDate = $newCreationDate;
-        
     }
 
     public function getId() {
@@ -48,7 +45,7 @@ class Tweet {
     public function getCreationDate() {
         return $this->creationDate;
     }
-    
+
     static public function loadTweetById(mysqli $connection, $id) {
 
         $sql = "SELECT * FROM Tweet WHERE id=$id";
@@ -69,7 +66,7 @@ class Tweet {
 
         return null;
     }
-    
+
     static public function loadAllTweetsByUserId(mysqli $connection, $userId) {
 
         $sql = "SELECT * FROM Tweet WHERE userId=$userId ORDER BY creationDate DESC";
@@ -91,8 +88,8 @@ class Tweet {
 
         return $ret;
     }
-    
-        static public function loadAllTweets(mysqli $connection) {
+
+    static public function loadAllTweets(mysqli $connection) {
 
         $sql = "SELECT * FROM Tweet ORDER BY creationDate DESC";
         $ret = [];
@@ -113,7 +110,8 @@ class Tweet {
 
         return $ret;
     }
-        public function saveToDB(mysqli $connection) {
+
+    public function saveToDB(mysqli $connection) {
 
         if ($this->id == -1) {
 
@@ -127,26 +125,19 @@ class Tweet {
                 $this->id = $connection->insert_id;
 
                 return true;
-            
-                } else {
-                    return false;
-                }
+            } else {
+                return false;
+            }
         } else {
-            $sql= "UPDATE Tweet SET userId='$this->userId', text='$this->text',
+            $sql = "UPDATE Tweet SET userId='$this->userId', text='$this->text',
                    creationDate='$this->creationDate' WHERE id=$this->id";
             $result = $connection->query($sql);
-            if($result == true){
+            if ($result == true) {
                 return true;
             }
         }
 
-            return false;
-        
+        return false;
     }
-    
-    
+
 }
-
-
-
-

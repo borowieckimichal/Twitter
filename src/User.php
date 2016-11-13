@@ -48,7 +48,7 @@ class User {
     public function getEmail() {
         return $this->email;
     }
-    
+
     public function verifyPassword($password) {
         return password_verify($password, $this->hashedPassword);
     }
@@ -68,21 +68,21 @@ class User {
 
                 return true;
             } else {
-              
-            return false;
+
+                return false;
             }
         } else {
-                $sql = "UPDATE users SET username='$this->username',hashed_password='$this->hashedPassword',email='$this->email'  
+            $sql = "UPDATE users SET username='$this->username',hashed_password='$this->hashedPassword',email='$this->email'  
                 WHERE id=$this->id";
 
-                $result = $connection->query($sql);
+            $result = $connection->query($sql);
 
-                if ($result == true) {
-                    return true;
-                } else {
-                    return false;
-                }
-        }       
+            if ($result == true) {
+                return true;
+            } else {
+                return false;
+            }
+        }
     }
 
     /**
@@ -149,8 +149,8 @@ class User {
         }
         return true;
     }
-    
-       static public function loadUserByEmail(mysqli $connection, $email) {
+
+    static public function loadUserByEmail(mysqli $connection, $email) {
 
         $sql = "SELECT * FROM users WHERE email='$email'";
 
@@ -170,36 +170,32 @@ class User {
 
         return null;
     }
-    
+
     static public function logIn(mysqli $connection, $email, $password) {
-		$loadedUser = self::loadUserByEmail($connection, $email);
-			
-			if(password_verify($password, $loadedUser->hashedPassword)) {
-				return $loadedUser;
-			} else {
-				return false;
-			}
-		
-		}
-	
-        
-        
-        
-        static public function getUserByEmail(mysqli $conn, $email) {
-		$sql = "SELECT * FROM users WHERE email = '$email'";
-		$result = $conn->query($sql);
-		if($result->num_rows == 1) {
-			$row = $result->fetch_assoc();
-			$user = new User();
-			
-			$user->setEmail($row['email']);
-			$user->setPassword($row['hashed_password']);
-			$user->setUserName($row['username']);
-			//$user->setActive($row['active']);
-			return $user;
-		} else {
-			return false;
-		}
-	}
+        $loadedUser = self::loadUserByEmail($connection, $email);
+
+        if (password_verify($password, $loadedUser->hashedPassword)) {
+            return $loadedUser;
+        } else {
+            return false;
+        }
+    }
+
+    static public function getUserByEmail(mysqli $conn, $email) {
+        $sql = "SELECT * FROM users WHERE email = '$email'";
+        $result = $conn->query($sql);
+        if ($result->num_rows == 1) {
+            $row = $result->fetch_assoc();
+            $user = new User();
+
+            $user->setEmail($row['email']);
+            $user->setPassword($row['hashed_password']);
+            $user->setUserName($row['username']);
+            //$user->setActive($row['active']);
+            return $user;
+        } else {
+            return false;
+        }
+    }
 
 }

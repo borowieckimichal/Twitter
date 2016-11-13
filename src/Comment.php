@@ -1,13 +1,13 @@
 <?php
 
 class Comment {
-    
+
     private $id;
     private $id_usera;
     private $id_postu;
     private $creation_date;
     private $text;
-    
+
     public function __construct() {
         $this->id = -1;
         $this->id_usera = 0;
@@ -15,40 +15,48 @@ class Comment {
         $this->creation_date = 0;
         $this->text = 0;
     }
-    
+
     public function setIdUsera($newid_usera) {
         $this->id_usera = $newid_usera;
     }
+
     public function setIdPostu($newid_postu) {
         $this->id_postu = $newid_postu;
     }
+
     public function setCreationDate($newCreationDate) {
-        if($newCreationDate === date('Y-m-d H:i:s')){
-        $this->creation_date = $newCreationDate;
+        if ($newCreationDate === date('Y-m-d H:i:s')) {
+            $this->creation_date = $newCreationDate;
         }
     }
-        public function setText($newText) {
-        if(is_string($newText)) {
-        $this->text = $newText;
+
+    public function setText($newText) {
+        if (is_string($newText)) {
+            $this->text = $newText;
         }
     }
-        public function getId() {
+
+    public function getId() {
         return $this->id;
     }
-        public function getId_usera() {
+
+    public function getId_usera() {
         return $this->id_usera;
     }
-        public function getId_postu() {
+
+    public function getId_postu() {
         return $this->id_postu;
     }
-        public function getCreationDate() {
+
+    public function getCreationDate() {
         return $this->creation_date;
     }
-        public function getText() {
+
+    public function getText() {
         return $this->text;
-    }   
-    
-        static public function loadCommentById(mysqli $connection, $id) {
+    }
+
+    static public function loadCommentById(mysqli $connection, $id) {
 
         $sql = "SELECT * FROM Comment WHERE id=$id ORDER BY creation_date DESC";
 
@@ -69,8 +77,8 @@ class Comment {
 
         return null;
     }
-    
-        static public function loadAllCommentsByPostId(mysqli $connection, $id_postu) {
+
+    static public function loadAllCommentsByPostId(mysqli $connection, $id_postu) {
 
         $sql = "SELECT * FROM Comment WHERE id_postu=$id_postu ORDER BY creation_date DESC";
         $ret = [];
@@ -82,7 +90,7 @@ class Comment {
                 $loadedComment = new Comment();
                 $loadedComment->id = $row['id'];
                 $loadedComment->id_usera = $row['id_usera'];
-                $loadedComment->id_postu = $row['id_postu'];                
+                $loadedComment->id_postu = $row['id_postu'];
                 $loadedComment->creation_date = $row['Creation_date'];
                 $loadedComment->text = $row['text'];
 
@@ -92,8 +100,8 @@ class Comment {
 
         return $ret;
     }
-    
-       public function saveToDB(mysqli $connection) {
+
+    public function saveToDB(mysqli $connection) {
 
         if ($this->id == -1) {
 
@@ -121,8 +129,5 @@ class Comment {
             return false;
         }
     }
-    
-    
-    
-    
+
 }

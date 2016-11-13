@@ -19,31 +19,25 @@ Twoje ID: <?php echo $_SESSION['loggedUserId']; ?>
 <?php
 if (isset($_GET['userId']) && is_numeric($_GET['userId'])) {
 
-$receiverId = $_GET['userId'];
-if($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $receiverId = $_GET['userId'];
+    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $message = isset($_POST['message']) ? $conn->real_escape_string(trim($_POST['message'])) : null;
-          $messageId = $_SESSION['loggedUserId'];           
-            	$newMessage = new Message();
-                $newMessage->setIdSender($messageId);
-                $newMessage->setIdReceiver($receiverId);
-		$newMessage->setText($message);
-                $newMessage->setUnread();				
-                if($newMessage->saveToDB($conn)) {
-			header("Location: allmessages.php");
-                        
-		} else {
-			echo "wysyłanie wiadomości nie powiodło się<br>";
-                       
-		}   
-        
-        
+        $messageId = $_SESSION['loggedUserId'];
+        $newMessage = new Message();
+        $newMessage->setIdSender($messageId);
+        $newMessage->setIdReceiver($receiverId);
+        $newMessage->setText($message);
+        $newMessage->setUnread();
+        if ($newMessage->saveToDB($conn)) {
+            header("Location: allmessages.php");
+        } else {
+            echo "wysyłanie wiadomości nie powiodło się<br>";
+        }
     }
-    
-        $conn->close();
-        $conn = null;
-    
-}   
 
+    $conn->close();
+    $conn = null;
+}
 ?>
 <!DOCTYPE HTML>
 <html lang="pl">
@@ -52,14 +46,14 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
         <title>Twitter</title>
     </head>
     <body>
-    <form action="#" method="post" align="center" cols="200">
-        <label>
-            Twoja nowa wiadomość  
-            <textarea type="text" name="message" cols="90"> wpisz swoją wiadomość</textarea>
-            <br>       
-        <input type="submit" value="wyślij wiadomość" />
-        </label>
-    </form>
+        <form action="#" method="post" align="center" cols="200">
+            <label>
+                Twoja nowa wiadomość  
+                <textarea type="text" name="message" cols="90"> wpisz swoją wiadomość</textarea>
+                <br>       
+                <input type="submit" value="wyślij wiadomość" />
+            </label>
+        </form>
     </p>
 </body>
 </html>
