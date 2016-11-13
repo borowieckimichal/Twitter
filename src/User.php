@@ -60,7 +60,7 @@ class User {
             //Saving new user to DB
 
             $sql = "INSERT INTO users(username, hashed_password, email)
-        VALUES ('$this->username', '$this->hashedPassword', '$this->email')";
+                VALUES ('$this->username', '$this->hashedPassword', '$this->email')";
 
             $result = $connection->query($sql);
             if ($result == true) {
@@ -72,7 +72,8 @@ class User {
                 return false;
             }
         } else {
-            $sql = "UPDATE users SET username='$this->username',hashed_password='$this->hashedPassword',email='$this->email'  
+            $sql = "UPDATE users SET username='$this->username'
+                hashed_password='$this->hashedPassword',email='$this->email'  
                 WHERE id=$this->id";
 
             $result = $connection->query($sql);
@@ -112,8 +113,7 @@ class User {
         return null;
     }
 
-    static public
-            function loadAllUsers(mysqli $connection) {
+    static public function loadAllUsers(mysqli $connection) {
 
         $sql = "SELECT * FROM users";
         $ret = [];

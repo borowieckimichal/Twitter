@@ -3,25 +3,25 @@
 class Comment {
 
     private $id;
-    private $id_usera;
-    private $id_postu;
+    private $id_user;
+    private $id_post;
     private $creation_date;
     private $text;
 
     public function __construct() {
         $this->id = -1;
-        $this->id_usera = 0;
-        $this->id_postu = 0;
+        $this->id_user = 0;
+        $this->id_post = 0;
         $this->creation_date = 0;
         $this->text = 0;
     }
 
-    public function setIdUsera($newid_usera) {
-        $this->id_usera = $newid_usera;
+    public function setIdUser($newid_user) {
+        $this->id_user = $newid_user;
     }
 
-    public function setIdPostu($newid_postu) {
-        $this->id_postu = $newid_postu;
+    public function setIdPost($newid_post) {
+        $this->id_post = $newid_post;
     }
 
     public function setCreationDate($newCreationDate) {
@@ -40,12 +40,12 @@ class Comment {
         return $this->id;
     }
 
-    public function getId_usera() {
-        return $this->id_usera;
+    public function getId_user() {
+        return $this->id_user;
     }
 
-    public function getId_postu() {
-        return $this->id_postu;
+    public function getId_post() {
+        return $this->id_post;
     }
 
     public function getCreationDate() {
@@ -67,8 +67,8 @@ class Comment {
             $row = $result->fetch_assoc();
             $loadedComment = new Comment();
             $loadedComment->id = $row['id'];
-            $loadedComment->id_usera = $row['id_usera'];
-            $loadedComment->id_postu = $row['id_postu'];
+            $loadedComment->id_user = $row['id_user'];
+            $loadedComment->id_post = $row['id_post'];
             $loadedComment->creation_date = $row['creation_date'];
             $loadedComment->text = $row['text'];
 
@@ -80,7 +80,8 @@ class Comment {
 
     static public function loadAllCommentsByPostId(mysqli $connection, $id_postu) {
 
-        $sql = "SELECT * FROM Comment WHERE id_postu=$id_postu ORDER BY creation_date DESC";
+        $sql = "SELECT * FROM Comment WHERE id_postu=$id_postu ORDER BY 
+                creation_date DESC";
         $ret = [];
 
         $result = $connection->query($sql);
@@ -89,8 +90,8 @@ class Comment {
 
                 $loadedComment = new Comment();
                 $loadedComment->id = $row['id'];
-                $loadedComment->id_usera = $row['id_usera'];
-                $loadedComment->id_postu = $row['id_postu'];
+                $loadedComment->id_user = $row['id_usera'];
+                $loadedComment->id_post = $row['id_postu'];
                 $loadedComment->creation_date = $row['Creation_date'];
                 $loadedComment->text = $row['text'];
 
@@ -108,26 +109,24 @@ class Comment {
             //Saving new user to DB
 
             $sql = "INSERT INTO Comment(id_usera, id_postu, text)
-        VALUES ('$this->id_usera','$this->id_postu', '$this->text')";
+                    VALUES ('$this->id_user','$this->id_post', '$this->text')";
 
             $result = $connection->query($sql);
             if ($result == true) {
                 $this->id = $connection->insert_id;
 
                 return true;
-            } else {
-                $sql = "UPDATE Comment SET text='$this->text'
+            }
+            return false;
+        } else {
+            $sql = "UPDATE Comment SET text='$this->text'
                         WHERE id=$this->id";
 
-                $result = $connection->query($sql);
+            $result = $connection->query($sql);
 
-                if ($result == true) {
-                    return true;
-                }
+            if ($result == true) {
+                return true;
             }
-
-            return false;
         }
     }
-
 }

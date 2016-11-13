@@ -106,7 +106,8 @@ class Message {
 
     static public function loadAllMessagesByIdSender(mysqli $connection, $id_sender) {
 
-        $sql = "SELECT * FROM Message WHERE id_sender=$id_sender ORDER BY Creation_date DESC";
+        $sql = "SELECT * FROM Message WHERE id_sender=$id_sender ORDER BY "
+                . "Creation_date DESC";
         $ret = [];
 
         $result = $connection->query($sql);
@@ -130,7 +131,8 @@ class Message {
 
     static public function loadAllMessagesByIdReceiver(mysqli $connection, $id_receiver) {
 
-        $sql = "SELECT * FROM Message WHERE id_receiver=$id_receiver ORDER BY Creation_date DESC";
+        $sql = "SELECT * FROM Message WHERE id_receiver=$id_receiver ORDER BY "
+                . "Creation_date DESC";
         $ret = [];
 
         $result = $connection->query($sql);
@@ -167,7 +169,8 @@ class Message {
 
     static public function loadAllUnreadMessagesByIdReceiver(mysqli $connection, $id_receiver) {
 
-        $sql = "SELECT * FROM Message WHERE id_receiver=$id_receiver AND unread='0' ORDER BY Creation_date DESC";
+        $sql = "SELECT * FROM Message WHERE id_receiver=$id_receiver AND unread='0' "
+                . "ORDER BY Creation_date DESC";
         $ret = [];
 
         $result = $connection->query($sql);
@@ -191,7 +194,8 @@ class Message {
 
     static public function loadAllReadMessagesByIdReceiver(mysqli $connection, $id_receiver) {
 
-        $sql = "SELECT * FROM Message WHERE id_receiver=$id_receiver AND unread='1' ORDER BY Creation_date DESC";
+        $sql = "SELECT * FROM Message WHERE id_receiver=$id_receiver AND unread='1' "
+                . "ORDER BY Creation_date DESC";
         $ret = [];
 
         $result = $connection->query($sql);

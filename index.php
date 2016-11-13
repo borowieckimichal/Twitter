@@ -19,13 +19,13 @@ Twoje ID: <?php echo $_SESSION['loggedUserId']; ?>
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     require_once 'src/connection.php';
     require_once 'src/Tweet.php';
-    //require_once 'src/User.php';
+
     $tweetemail = isset($_POST['tweet']) ? $conn->real_escape_string(trim($_POST['tweet'])) : null;
     $tweetUser = $_SESSION['loggedUserId'];
     $newTweet = new Tweet();
     $newTweet->setUserId($tweetUser);
     $newTweet->setText($tweetemail);
-    //$newTweet->setCreationDate(date("Y-m-d H:i:s"));				
+
     if ($newTweet->saveToDB($conn)) {
         header("Location: showuser.php");
     } else {
@@ -33,8 +33,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         var_dump($newTweet);
         var_dump($conn);
     }
-    //$conn->close();
-    //$conn = null;
 }
 ?>
 <!DOCTYPE HTML>
@@ -60,6 +58,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     foreach ($loadedTweets as $tweet) {
                         echo "nr tweeta: " . $tweetId = $tweet->getId() . ' | ';
                         echo "Tweet: " . $tweetText = $tweet->getText() . ' | ';
+                        echo "<a href='postinfo.php?postid=" . $tweet->getId() . "'>strona postu</a>" . " | ";
                         echo "nr autora:" . $tweetUserId = $tweet->getUserId() . "<br>";
                     }
                     ?>
@@ -95,13 +94,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     </tr>  
     <tr>
         <td>
-<?php
-$allUsers = User::loadAllUsers($conn);
-foreach ($allUsers as $user) {
-    echo $user->getUsername();
-    echo "<br>";
-}
-?>
+            <?php
+            $allUsers = User::loadAllUsers($conn);
+            foreach ($allUsers as $user) {
+                echo $user->getUsername();
+                echo "<br>";
+            }
+            ?>
         </td>
         <td>
             <?php

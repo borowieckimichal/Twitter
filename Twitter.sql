@@ -3,9 +3,9 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Nov 05, 2016 at 07:57 PM
--- Server version: 5.5.50-0ubuntu0.14.04.1
--- PHP Version: 5.5.9-1ubuntu4.19
+-- Generation Time: Nov 14, 2016 at 12:01 AM
+-- Server version: 5.5.53-0ubuntu0.14.04.1
+-- PHP Version: 5.5.9-1ubuntu4.20
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -35,29 +35,16 @@ CREATE TABLE IF NOT EXISTS `Comment` (
   PRIMARY KEY (`id`),
   KEY `id_usera` (`id_usera`),
   KEY `id_postu` (`id_postu`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=22 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=25 ;
 
 --
 -- Dumping data for table `Comment`
 --
 
 INSERT INTO `Comment` (`id`, `id_usera`, `id_postu`, `Creation_date`, `text`) VALUES
-(3, 2, 2, '0000-00-00 00:00:00', 'tekst'),
-(7, 3, 16, '2016-10-30 08:06:25', 'komentarz55'),
-(8, 3, 16, '2016-10-30 08:06:36', 'komentarz'),
-(9, 3, 16, '2016-10-30 08:09:02', 'komentarz55'),
-(10, 3, 16, '2016-10-30 08:09:40', 'koment'),
-(11, 3, 17, '2016-10-30 12:00:50', 'komentarz555'),
-(12, 3, 17, '2016-10-30 12:02:16', 'komentarz555'),
-(13, 3, 17, '2016-10-30 12:05:19', 'komentarz test'),
-(14, 3, 17, '2016-10-30 12:06:02', 'komentarz test'),
-(15, 3, 17, '2016-10-30 12:06:19', 'komentarz test'),
-(16, 3, 17, '2016-10-30 12:08:24', 'komentarz test'),
-(17, 3, 17, '2016-10-30 12:09:21', 'komentarz test'),
-(18, 3, 17, '2016-10-30 12:10:37', 'komentarz test'),
-(19, 3, 25, '2016-10-31 19:04:34', 'test77'),
-(20, 3, 25, '2016-10-31 19:05:49', 'test55'),
-(21, 3, 25, '2016-10-31 19:55:33', 'komentarz77');
+(22, 3, 25, '2016-11-13 21:47:12', 'komentarz2'),
+(23, 3, 24, '2016-11-13 22:56:25', 'komentarz1'),
+(24, 1, 24, '2016-11-13 22:58:16', 'komentarz2');
 
 -- --------------------------------------------------------
 
@@ -75,7 +62,7 @@ CREATE TABLE IF NOT EXISTS `Message` (
   PRIMARY KEY (`id`),
   KEY `id_sender` (`id_sender`),
   KEY `id_receiver` (`id_receiver`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=31 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=34 ;
 
 --
 -- Dumping data for table `Message`
@@ -95,7 +82,10 @@ INSERT INTO `Message` (`id`, `id_sender`, `id_receiver`, `creation_date`, `text`
 (27, 2, 1, '2016-11-04 19:16:11', 'wiadmoÅ›Ä‡ 999', 1),
 (28, 1, 2, '2016-11-04 20:33:02', 'test17', 1),
 (29, 1, 2, '2016-11-05 15:12:33', 'wiadomosc testowa 16', 1),
-(30, 3, 1, '2016-11-05 18:45:47', 'testowa wiadomosc', 0);
+(30, 3, 1, '2016-11-05 18:45:47', 'testowa wiadomosc', 0),
+(31, 1, 2, '2016-11-13 22:58:30', 'test5', 0),
+(32, 1, 3, '2016-11-13 22:59:18', 'wiadomoÅ›c 2', 0),
+(33, 1, 2, '2016-11-13 22:59:32', 'wiadmosc 3', 0);
 
 -- --------------------------------------------------------
 

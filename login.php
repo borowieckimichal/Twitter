@@ -48,7 +48,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         <input type="text" name="email">
                     </label>
                     <br>
-
+                    
                     <label>
                         Hasło:
                         <input type="password" name="password">
