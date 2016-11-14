@@ -117,8 +117,8 @@ class Tweet {
 
             //Saving new tweet to DB
 
-            $sql = "INSERT INTO Tweet(userId, text)
-        VALUES ('$this->userId', '$this->text')";
+        $sql = "INSERT INTO Tweet(userId, text)
+               VALUES ('$this->userId', '$this->text')";
 
             $result = $connection->query($sql);
             if ($result == true) {
@@ -129,8 +129,8 @@ class Tweet {
                 return false;
             }
         } else {
-            $sql = "UPDATE Tweet SET userId='$this->userId', text='$this->text',
-                   creationDate='$this->creationDate' WHERE id=$this->id";
+        $sql = "UPDATE Tweet SET userId='$this->userId', text='$this->text',
+               creationDate='$this->creationDate' WHERE id=$this->id";
             $result = $connection->query($sql);
             if ($result == true) {
                 return true;

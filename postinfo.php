@@ -33,8 +33,8 @@ if (isset($_GET['postid']) && is_numeric($_GET['postid'])) {
         $newComment->setIdUser($commentUser);
         $newComment->setText($comment);
         $newComment->saveToDB($conn);
-        
-        if(!$newComment->saveToDB($conn)) {
+
+        if (!$newComment->saveToDB($conn)) {
             echo "Dodawanie komentarza nie powiodło się<br>";
         }
     }

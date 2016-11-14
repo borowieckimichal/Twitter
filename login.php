@@ -45,13 +45,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     <strong>Twitter - Logowanie</strong><br>
                     <label>
                         E-mail:
-                        <input type="text" name="email">
+                        <input type="text" id="mail" name="email">
                     </label>
                     <br>
-                    
+
                     <label>
                         Hasło:
-                        <input type="password" name="password">
+                        <input type="password" id="password" name="password">
                     </label>
                     <br>
                 </fieldset>

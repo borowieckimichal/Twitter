@@ -9,21 +9,18 @@ if (!isset($_SESSION['loggedUserId'])) {
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $loggedUserId = $_SESSION['loggedUserId'];
-    // $loggedUser = User::loadUserById($conn, $id);
+
     $email = isset($_POST['email']) ? $conn->real_escape_string(trim($_POST['email'])) : null;
     $password = isset($_POST['password']) ? $conn->real_escape_string(trim($_POST['password'])) : null;
     $passwordConfirmation = isset($_POST['passwordConfirmation']) ? trim($_POST['passwordConfirmation']) : null;
     $username = isset($_POST['username']) ? $conn->real_escape_string(trim($_POST['username'])) : null;
 
-    //$user = User::loadUserById($conn, $loggedUserId);
 
     if ($email && $username && $password && $password == $passwordConfirmation) {
 
-        //$newUser = new User();
+
         $newUser = User::loadUserById($conn, $loggedUserId);
-        //$newUser->loadUserById($conn, $loggedUserId);               
-        //$newUser->getId();
-        //$newUser = User::loadUserById($conn, $loggedUserId);
+
         $newUser->setUserName($username);
         $newUser->setPassword($password);
         $newUser->setUserName($username);
@@ -31,11 +28,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 
         if ($newUser->saveToDB($conn)) {
-            //header("Location: login.php");
+
             echo "zmieniono dane użytkownika<br>";
         } else {
             echo "zmiana danych nie powiodła się<br>";
-            var_dump($newUser);
         }
     } else {
         echo 'Nieprawidłowe dane<br>';

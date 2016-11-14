@@ -42,18 +42,18 @@ Twoje ID: <?php echo $_SESSION['loggedUserId']; ?>
         echo 'Wiadomości otrzymane' . '<br>';
         ?>
         <div class='message_unread'>
-        <?php
-        $unreadMessage = Message::loadAllUnreadMessagesByIdReceiver($conn, $userLoged);
+            <?php
+            $unreadMessage = Message::loadAllUnreadMessagesByIdReceiver($conn, $userLoged);
 
-        foreach ($unreadMessage as $message) {
+            foreach ($unreadMessage as $message) {
 
-            echo "nr wysyłającego: " . $message->getIdSender() . ' | ';
-            echo "nr otrzymującego: " . $message->getIdReceiver() . ' | ';
-            echo "Wiadomość: " . substr($message->getText(), 0, 30) . ' | ';
-            echo "<a href='messageinfo.php?messageId=" . $message->getId() . "'>przeczytaj całą wiadomość</a>" . ' | ';
-            echo "Data przesłania: " . $message->getCreationDate() . ' | ' . "<br>";
-        }
-        ?>   
+                echo "nr wysyłającego: " . $message->getIdSender() . ' | ';
+                echo "nr otrzymującego: " . $message->getIdReceiver() . ' | ';
+                echo "Wiadomość: " . substr($message->getText(), 0, 30) . ' | ';
+                echo "<a href='messageinfo.php?messageId=" . $message->getId() . "'>przeczytaj całą wiadomość</a>" . ' | ';
+                echo "Data przesłania: " . $message->getCreationDate() . ' | ' . "<br>";
+            }
+            ?>   
         </div>
         <div class='message_read'>
             <?php
